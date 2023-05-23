@@ -3,6 +3,7 @@ using Documenter
 
 DocMeta.setdocmeta!(OpticalWavefronts, :DocTestSetup, :(using OpticalWavefronts); recursive=true)
 
+include("pages.jl")
 makedocs(;
     modules=[OpticalWavefronts],
     authors="Ryan Dungee <ryan.dungee@utoronto.ca> and contributors",
@@ -14,9 +15,7 @@ makedocs(;
         edit_link="main",
         assets=String[],
     ),
-    pages=[
-        "Home" => "index.md",
-    ],
+    pages=pages,
 )
 
 deploydocs(;
