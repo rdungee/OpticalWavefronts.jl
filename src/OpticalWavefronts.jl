@@ -3,8 +3,13 @@ module OpticalWavefronts
 export Wavefront
 
 struct Wavefront
-    x::AbstractVector{AbstractFloat}
+    coordinates::AbstractVector{AbstractFloat}
     wf::Matrix{Union{Complex,AbstractFloat}}
+    wavelength::AbstractFloat
+    spectraldistribution::Union{Function,Missing}
+    Wavefront(coordinates) = new(coordinates, zeros(Complex, length(coordinates), length(coordinates)), 500e-9, missing)
+    Wavefront(coordinates, wf) = new(coordinates, wf, 500e-9, missing)
+    Wavefront(coordinates, wf, wavelength) = new(coordinates, wf, wavelength, missing)
 end
 
 function Base.size(wf::Wavefront)
